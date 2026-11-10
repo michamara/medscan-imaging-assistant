@@ -27,7 +27,7 @@ function storage(): Storage | null {
 
 function isSession(value: unknown): value is DemoSession {
   if (!value || typeof value !== "object") return false;
-  const v = value as Record<string, unknown>;
+  const v = value as Partial<Record<keyof DemoSession, unknown>>;
   return (
     typeof v.id === "string" &&
     (v.type === "ecg" || v.type === "xray") &&
