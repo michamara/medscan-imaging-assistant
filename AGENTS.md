@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Medical images are previewed only via in-browser object URLs (src/lib/image-session.ts, in-memory); never upload or persist image data — privacy requirement of the prototype.
+- Demo history persists only non-sensitive metadata (type, date, format, size) in localStorage via src/lib/history.ts — no file names or image data.
+- Result screens render fixed content from src/lib/exams.ts, independent of the uploaded image — the app must never imply real interpretation.

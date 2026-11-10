@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as EcgRouteImport } from './routes/ecg'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as XrayRouteImport } from './routes/xray'
+import { Route as ResultsSessionIdRouteImport } from './routes/results.$sessionId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EcgRoute = EcgRouteImport.update({
+  id: '/ecg',
+  path: '/ecg',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const XrayRoute = XrayRouteImport.update({
+  id: '/xray',
+  path: '/xray',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsSessionIdRoute = ResultsSessionIdRouteImport.update({
+  id: '/results/$sessionId',
+  path: '/results/$sessionId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ecg': typeof EcgRoute
+  '/history': typeof HistoryRoute
+  '/xray': typeof XrayRoute
+  '/results/$sessionId': typeof ResultsSessionIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ecg': typeof EcgRoute
+  '/history': typeof HistoryRoute
+  '/xray': typeof XrayRoute
+  '/results/$sessionId': typeof ResultsSessionIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ecg': typeof EcgRoute
+  '/history': typeof HistoryRoute
+  '/xray': typeof XrayRoute
+  '/results/$sessionId': typeof ResultsSessionIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/about' | '/ecg' | '/history' | '/xray' | '/results/$sessionId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/ecg' | '/history' | '/xray' | '/results/$sessionId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/ecg'
+    | '/history'
+    | '/xray'
+    | '/results/$sessionId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  EcgRoute: typeof EcgRoute
+  HistoryRoute: typeof HistoryRoute
+  XrayRoute: typeof XrayRoute
+  ResultsSessionIdRoute: typeof ResultsSessionIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ecg': {
+      id: '/ecg'
+      path: '/ecg'
+      fullPath: '/ecg'
+      preLoaderRoute: typeof EcgRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/xray': {
+      id: '/xray'
+      path: '/xray'
+      fullPath: '/xray'
+      preLoaderRoute: typeof XrayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results/$sessionId': {
+      id: '/results/$sessionId'
+      path: '/results/$sessionId'
+      fullPath: '/results/$sessionId'
+      preLoaderRoute: typeof ResultsSessionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  EcgRoute: EcgRoute,
+  HistoryRoute: HistoryRoute,
+  XrayRoute: XrayRoute,
+  ResultsSessionIdRoute: ResultsSessionIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
