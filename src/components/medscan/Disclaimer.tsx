@@ -1,5 +1,5 @@
 import { AlertTriangle, ShieldAlert } from "lucide-react";
-import { DISCLAIMER_TEXT, SIMULATED_LABEL } from "@/lib/exams";
+import { DISCLAIMER_TEXT, SAFETY_NOTICE, SIMULATED_LABEL } from "@/lib/exams";
 import { cn } from "@/lib/utils";
 
 export function SimulatedBanner({ className }: { className?: string }) {
@@ -50,5 +50,25 @@ export function Disclaimer({ className, compact = false }: { className?: string;
         <p className={cn("leading-relaxed", compact ? "text-sm" : "text-sm sm:text-base")}>{DISCLAIMER_TEXT}</p>
       </div>
     </aside>
+  );
+}
+
+/** Prominent safety warning shown next to every demonstration result. */
+export function SafetyNotice({ className }: { className?: string }) {
+  return (
+    <div
+      role="note"
+      aria-label="Medical safety notice"
+      className={cn(
+        "flex items-start gap-3 rounded-2xl border-2 border-caution/60 bg-caution-soft p-4 text-caution-foreground sm:p-5",
+        className,
+      )}
+    >
+      <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0" />
+      <div className="space-y-1">
+        <p className="font-mono text-xs font-semibold tracking-[0.14em]">MEDICAL SAFETY NOTICE</p>
+        <p className="text-sm font-medium leading-relaxed sm:text-base">{SAFETY_NOTICE}</p>
+      </div>
+    </div>
   );
 }

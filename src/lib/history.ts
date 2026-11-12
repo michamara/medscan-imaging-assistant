@@ -1,4 +1,4 @@
-import type { ExamType } from "./exams";
+import { isXrayCategory, type ExamType, type XrayCategory } from "./exams";
 
 /**
  * Only non-sensitive demonstration metadata is stored. No image data,
@@ -10,6 +10,8 @@ export interface DemoSession {
   createdAt: string; // ISO timestamp
   format: "JPG" | "PNG";
   sizeKb: number;
+  /** Body area chosen for X-ray demos (label only). */
+  category?: XrayCategory;
 }
 
 export const HISTORY_STORAGE_KEY = "medscan.demo-history.v1";
@@ -33,7 +35,8 @@ function isSession(value: unknown): value is DemoSession {
     (v.type === "ecg" || v.type === "xray") &&
     typeof v.createdAt === "string" &&
     (v.format === "JPG" || v.format === "PNG") &&
-    typeof v.sizeKb === "number"
+    typeof v.sizeKb === "number" &&
+    (v.category === undefined || isXrayCategory(v.category))
   );
 }
 
@@ -74,6 +77,7 @@ export function addSession(input: Omit<DemoSession, "id" | "createdAt"> & { id?:
     type: input.type,
     format: input.format,
     sizeKb: Math.round(input.sizeKb),
+    ...(input.type === "xray" && input.category ? { category: input.category } : {}),
   };
   write([session, ...getHistory()].slice(0, MAX_HISTORY_ITEMS));
   return session;

@@ -19,3 +19,25 @@ describe("demo history", () => {
     expect(getHistory()).toEqual([]);
   });
 });
+
+describe("x-ray category metadata", () => {
+  beforeEach(() => localStorage.clear());
+
+  it("keeps the chosen category for x-ray sessions", () => {
+    addSession({ type: "xray", format: "JPG", sizeKb: 50, category: "dental" });
+    expect(getHistory()[0].category).toBe("dental");
+  });
+
+  it("never stores a category on ECG sessions", () => {
+    addSession({ type: "ecg", format: "JPG", sizeKb: 50, category: "spine" });
+    expect(getHistory()[0].category).toBeUndefined();
+  });
+
+  it("drops stored entries with an unknown category", () => {
+    localStorage.setItem(
+      HISTORY_STORAGE_KEY,
+      JSON.stringify([{ id: "a", type: "xray", createdAt: new Date().toISOString(), format: "PNG", sizeKb: 1, category: "brain" }]),
+    );
+    expect(getHistory()).toEqual([]);
+  });
+});

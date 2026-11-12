@@ -9,6 +9,7 @@ export const NAV_ITEMS = [
   { to: "/", label: "Home" },
   { to: "/ecg", label: "ECG Analysis" },
   { to: "/xray", label: "X-Ray Analysis" },
+  { to: "/learning-lab", label: "Learning Lab" },
   { to: "/history", label: "History" },
   { to: "/about", label: "About" },
 ] as const;
@@ -19,7 +20,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.to}
@@ -32,14 +33,14 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Button asChild variant="hero" size="sm" className="rounded-full px-4">
             <Link to="/ecg">Try a demo</Link>
           </Button>
         </div>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
+            <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
               <Menu className="!h-5 !w-5" />
             </Button>
           </SheetTrigger>

@@ -59,11 +59,14 @@ export function EcgWaveform({
 }
 
 /** Labelled single-beat diagram used for education. */
-export function EcgLabelledDiagram({ className }: { className?: string }) {
+export function EcgLabelledDiagram({ className, highlightQrs = false }: { className?: string; highlightQrs?: boolean }) {
   return (
     <figure className={cn("rounded-2xl border bg-ecg-grid p-4 sm:p-6", className)}>
       <svg viewBox="-10 -6 220 130" className="h-auto w-full" role="img" aria-labelledby="ecg-diagram-title">
         <title id="ecg-diagram-title">Labelled illustration of one heartbeat on an ECG: P wave, QRS complex and T wave</title>
+        {highlightQrs && (
+          <rect x="54" y="6" width="26" height="74" rx="5" className="animate-in fade-in-0 fill-caution/25 stroke-caution" strokeWidth="1.2" strokeDasharray="3 2" />
+        )}
         <path
           d={"M-10,60 " + beat(0)}
           pathLength={1}

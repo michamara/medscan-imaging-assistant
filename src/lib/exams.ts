@@ -146,3 +146,40 @@ export const ANALYSIS_STEPS: Record<ExamType, string[]> = {
     "Preparing the simulated demonstration",
   ],
 };
+
+/** Body areas a user can pick before uploading an X-ray. Used for labelling only. */
+export const XRAY_CATEGORIES = [
+  { id: "chest", label: "Chest" },
+  { id: "arm-hand", label: "Arm & Hand" },
+  { id: "leg-foot", label: "Leg & Foot" },
+  { id: "spine", label: "Spine" },
+  { id: "dental", label: "Dental" },
+] as const;
+
+export type XrayCategory = (typeof XRAY_CATEGORIES)[number]["id"];
+
+export function isXrayCategory(value: unknown): value is XrayCategory {
+  return XRAY_CATEGORIES.some((c) => c.id === value);
+}
+
+export function xrayCategoryLabel(id: XrayCategory): string {
+  return XRAY_CATEGORIES.find((c) => c.id === id)?.label ?? id;
+}
+
+/** How long the simulated "analysis" loading state lasts. */
+export const DEMO_ANALYSIS_MS = 2000;
+
+export const NO_IMAGE_MESSAGE = "Please upload an image first.";
+
+/** Fixed copy for the inline result panel. Identical for every uploaded image. */
+export const DEMO_RESULT = {
+  title: "Analysis Demonstration Complete",
+  message:
+    "Your image has been uploaded successfully. This prototype does not perform automatic medical image interpretation. Explore the X-ray Learning Lab to see prepared educational examples.",
+  status: "SIMULATED RESULT",
+  independence:
+    "This message is identical for every image and is independent of the image you uploaded. No diagnosis was performed.",
+} as const;
+
+export const SAFETY_NOTICE =
+  "Educational demonstration only. This application does not provide medical diagnoses. Do not use its results to make medical decisions. Consult a qualified healthcare professional.";

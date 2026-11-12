@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as EcgRouteImport } from './routes/ecg'
 import { Route as HistoryRouteImport } from './routes/history'
+import { Route as LearningLabRouteImport } from './routes/learning-lab'
 import { Route as XrayRouteImport } from './routes/xray'
 import { Route as ResultsSessionIdRouteImport } from './routes/results.$sessionId'
 
@@ -36,6 +37,11 @@ const HistoryRoute = HistoryRouteImport.update({
   path: '/history',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LearningLabRoute = LearningLabRouteImport.update({
+  id: '/learning-lab',
+  path: '/learning-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const XrayRoute = XrayRouteImport.update({
   id: '/xray',
   path: '/xray',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/ecg': typeof EcgRoute
   '/history': typeof HistoryRoute
+  '/learning-lab': typeof LearningLabRoute
   '/xray': typeof XrayRoute
   '/results/$sessionId': typeof ResultsSessionIdRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ecg': typeof EcgRoute
   '/history': typeof HistoryRoute
+  '/learning-lab': typeof LearningLabRoute
   '/xray': typeof XrayRoute
   '/results/$sessionId': typeof ResultsSessionIdRoute
 }
@@ -69,21 +77,36 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/ecg': typeof EcgRoute
   '/history': typeof HistoryRoute
+  '/learning-lab': typeof LearningLabRoute
   '/xray': typeof XrayRoute
   '/results/$sessionId': typeof ResultsSessionIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/ecg' | '/history' | '/xray' | '/results/$sessionId'
+    | '/'
+    | '/about'
+    | '/ecg'
+    | '/history'
+    | '/learning-lab'
+    | '/xray'
+    | '/results/$sessionId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/ecg' | '/history' | '/xray' | '/results/$sessionId'
+  to:
+    | '/'
+    | '/about'
+    | '/ecg'
+    | '/history'
+    | '/learning-lab'
+    | '/xray'
+    | '/results/$sessionId'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/ecg'
     | '/history'
+    | '/learning-lab'
     | '/xray'
     | '/results/$sessionId'
   fileRoutesById: FileRoutesById
@@ -93,6 +116,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   EcgRoute: typeof EcgRoute
   HistoryRoute: typeof HistoryRoute
+  LearningLabRoute: typeof LearningLabRoute
   XrayRoute: typeof XrayRoute
   ResultsSessionIdRoute: typeof ResultsSessionIdRoute
 }
@@ -127,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/learning-lab': {
+      id: '/learning-lab'
+      path: '/learning-lab'
+      fullPath: '/learning-lab'
+      preLoaderRoute: typeof LearningLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/xray': {
       id: '/xray'
       path: '/xray'
@@ -149,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   EcgRoute: EcgRoute,
   HistoryRoute: HistoryRoute,
+  LearningLabRoute: LearningLabRoute,
   XrayRoute: XrayRoute,
   ResultsSessionIdRoute: ResultsSessionIdRoute,
 }
