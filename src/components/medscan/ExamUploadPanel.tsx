@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { Activity, AlertCircle, Bone, FlaskConical, Footprints, Hand, Lock, RotateCcw, ScanLine, ShieldCheck, Smile, Sparkles, Wind } from "lucide-react";
+import { Activity, AlertCircle, Bone, Footprints, Hand, Lock, RotateCcw, ScanLine, ShieldCheck, Smile, Sparkles, Wind } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { ImageUploader, type SelectedImage } from "./ImageUploader";
@@ -80,7 +79,7 @@ export function ExamUploadPanel({ type }: { type: ExamType }) {
     if (phase.name === "loading") return;
     if (!image) {
       setMissingImage(true);
-      toast.error(NO_IMAGE_MESSAGE, { description: "Choose a JPG, JPEG or PNG file, then click Analyze." });
+      toast.error(NO_IMAGE_MESSAGE, { description: "Choose a JPG, JPEG or PNG file, then click Analyze Image." });
       uploadRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
@@ -104,7 +103,6 @@ export function ExamUploadPanel({ type }: { type: ExamType }) {
       setPhase({
         name: "done",
         info: {
-          sessionId: id,
           previewUrl: current.url,
           examLabel: exam.shortName,
           categoryLabel: isXray ? xrayCategoryLabel(category) : undefined,
@@ -114,8 +112,8 @@ export function ExamUploadPanel({ type }: { type: ExamType }) {
         },
       });
     } catch {
-      setPhase({ name: "error", message: "Something went wrong while preparing the demonstration. Please check your image and try again." });
-      toast.error("Demo could not be completed", { description: "Please try again or choose another image." });
+      setPhase({ name: "error", message: "Something went wrong while preparing the preview. Please check your image and try again." });
+      toast.error("Preview could not be shown", { description: "Please try again or choose another image." });
     }
   }, [category, exam.shortName, isXray, type]);
 
@@ -195,9 +193,9 @@ export function ExamUploadPanel({ type }: { type: ExamType }) {
           )}
 
           <div className="mt-5 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs text-muted-foreground">Step 2 — results are predefined and educational.</p>
+            <p className="text-xs text-muted-foreground">Step 2 — see how results will be presented in a future version.</p>
             <Button variant="sky" size="xl" onClick={analyze} disabled={running}>
-              <Sparkles /> {running ? "Analyzing…" : "Analyze"}
+              <Sparkles /> {running ? "Analyzing…" : "Analyze Image"}
             </Button>
           </div>
         </div>
@@ -216,29 +214,17 @@ export function ExamUploadPanel({ type }: { type: ExamType }) {
               </li>
               <li className="flex gap-3">
                 <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-sky" />
-                <span><strong className="font-semibold">Educational results.</strong> <span className="text-navy-foreground/70">The result is the same for every image and explains concepts, not findings.</span></span>
+                <span><strong className="font-semibold">Prototype preview.</strong> <span className="text-navy-foreground/70">No medical analysis is performed. The result screen is the same for every image.</span></span>
               </li>
             </ul>
           </div>
-          <Link
-            to="/learning-lab"
-            className="group flex items-center gap-4 rounded-3xl border bg-card p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-lift"
-          >
-            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-sky-soft text-primary">
-              <FlaskConical className="h-5 w-5" />
-            </span>
-            <span className="min-w-0">
-              <span className="block font-semibold text-primary">X-ray Learning Lab</span>
-              <span className="block text-sm text-muted-foreground">See prepared examples with highlighted areas.</span>
-            </span>
-          </Link>
           <Disclaimer compact />
         </aside>
       </div>
 
       <div ref={resultRef} className="scroll-mt-24" aria-live="polite">
         {phase.name === "loading" && (
-          <AnalysisLoader title={`Running ${exam.shortName} demo`} steps={ANALYSIS_STEPS[type]} totalMs={DEMO_ANALYSIS_MS} onComplete={complete} />
+          <AnalysisLoader title={`Preparing ${exam.shortName} preview`} steps={ANALYSIS_STEPS[type]} totalMs={DEMO_ANALYSIS_MS} onComplete={complete} />
         )}
         {phase.name === "done" && <DemoResultPanel info={phase.info} onReset={reset} />}
         {phase.name === "error" && (

@@ -11,9 +11,13 @@ describe("demo rules", () => {
     expect(DEMO_ANALYSIS_MS).toBe(2000);
   });
 
-  it("uses the required result title and status", () => {
-    expect(DEMO_RESULT.title).toBe("Analysis Demonstration Complete");
-    expect(DEMO_RESULT.status).toBe("SIMULATED RESULT");
+  it("uses the required result title, status and disclaimer", () => {
+    expect(DEMO_RESULT.title).toBe("Image Analysis — Prototype Preview");
+    expect(DEMO_RESULT.status).toBe("PROTOTYPE DEMONSTRATION");
+    expect(DEMO_RESULT.disclaimer).toBe(
+      "This is an educational prototype, not a medical device. No medical analysis or diagnosis has been performed. Do not use this application to make medical decisions.",
+    );
+    expect(DEMO_RESULT.paragraphs[1]).toContain("automatic image analysis is not yet available");
   });
 
   it("uses the required safety notice", () => {

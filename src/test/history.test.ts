@@ -25,12 +25,12 @@ describe("x-ray category metadata", () => {
 
   it("keeps the chosen category for x-ray sessions", () => {
     addSession({ type: "xray", format: "JPG", sizeKb: 50, category: "dental" });
-    expect(getHistory()[0].category).toBe("dental");
+    expect(getHistory()[0]?.category).toBe("dental");
   });
 
   it("never stores a category on ECG sessions", () => {
     addSession({ type: "ecg", format: "JPG", sizeKb: 50, category: "spine" });
-    expect(getHistory()[0].category).toBeUndefined();
+    expect(getHistory()[0]?.category).toBeUndefined();
   });
 
   it("drops stored entries with an unknown category", () => {

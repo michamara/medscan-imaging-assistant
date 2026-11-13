@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { PageHeader } from "@/components/medscan/PageHeader";
 import { SimulatedChip } from "@/components/medscan/Disclaimer";
-import { EXAMS, type ExamType } from "@/lib/exams";
+import { EXAMS, xrayCategoryLabel, type ExamType } from "@/lib/exams";
 import { clearHistory, deleteSession, getHistory, subscribeHistory, type DemoSession } from "@/lib/history";
 import { forgetAllPreviews, forgetPreview } from "@/lib/image-session";
 import { cn } from "@/lib/utils";
@@ -142,7 +142,7 @@ function HistoryPage() {
                         <SimulatedChip />
                       </div>
                       <p className="mt-1 font-mono text-xs text-muted-foreground">
-                        {format(new Date(s.createdAt), "d MMM yyyy · HH:mm")} · {s.format} · {s.sizeKb} KB · #{s.id}
+                        {format(new Date(s.createdAt), "d MMM yyyy · HH:mm")}{s.category ? ` · ${xrayCategoryLabel(s.category)}` : ""} · {s.format} · {s.sizeKb} KB · #{s.id}
                       </p>
                     </div>
                   </div>

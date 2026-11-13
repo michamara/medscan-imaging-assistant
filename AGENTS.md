@@ -32,4 +32,5 @@ use the editor.
 ## Project rules
 - Medical images are previewed only via in-browser object URLs (src/lib/image-session.ts, in-memory); never upload or persist image data — privacy requirement of the prototype.
 - Demo history persists only non-sensitive metadata (type, date, format, size) in localStorage via src/lib/history.ts — no file names or image data.
-- Result screens render fixed content from src/lib/exams.ts, independent of the uploaded image — the app must never imply real interpretation.
+- Analysis screens (ECG/X-ray upload panel, /results/$sessionId) render only the fixed prototype-preview copy from src/lib/exams.ts (DEMO_RESULT), independent of the uploaded image — the app must never imply real interpretation.
+- All lessons, anatomy guides, glossaries and example cases live only in /learning-lab (data in src/lib/learning-lab.ts); analysis screens never render or link to them — keeps analysis and education clearly separate.

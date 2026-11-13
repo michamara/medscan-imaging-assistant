@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Activity, Bone, CheckCircle2, ScanLine, Wind } from "lucide-react";
 import { PageHeader } from "@/components/medscan/PageHeader";
 import { EducationalBadge, LabCaseViewer } from "@/components/medscan/LabCaseViewer";
+import { LabLessons } from "@/components/medscan/LabLessons";
 import { LAB_CASES } from "@/lib/learning-lab";
 import { cn } from "@/lib/utils";
 
@@ -32,8 +33,9 @@ const ICONS: Record<string, typeof Bone> = {
 };
 
 function LearningLabPage() {
-  const [activeId, setActiveId] = useState(LAB_CASES[0].id);
-  const active = LAB_CASES.find((c) => c.id === activeId) ?? LAB_CASES[0];
+  const first = LAB_CASES[0]!;
+  const [activeId, setActiveId] = useState(first.id);
+  const active = LAB_CASES.find((c) => c.id === activeId) ?? first;
 
   return (
     <>
@@ -87,6 +89,8 @@ function LearningLabPage() {
           Highlights mark areas named by each image's original author or standard anatomy. MedScan does not analyse these images or any image you upload.
         </p>
       </section>
+
+      <LabLessons />
     </>
   );
 }

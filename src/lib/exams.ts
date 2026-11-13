@@ -51,7 +51,7 @@ export interface ResultContent {
   glossary: GlossaryTerm[];
 }
 
-/** Predefined, image-independent educational content shown on every results screen. */
+/** Educational reference content. Shown only inside the Learning Lab, never on analysis screens. */
 export const RESULT_CONTENT: Record<ExamType, ResultContent> = {
   ecg: {
     overview:
@@ -133,18 +133,8 @@ export const RESULT_CONTENT: Record<ExamType, ResultContent> = {
 };
 
 export const ANALYSIS_STEPS: Record<ExamType, string[]> = {
-  ecg: [
-    "Reading your image locally in the browser",
-    "Checking file format and size",
-    "Loading the ECG educational module",
-    "Preparing the simulated demonstration",
-  ],
-  xray: [
-    "Reading your image locally in the browser",
-    "Checking file format and size",
-    "Loading the chest X-ray educational module",
-    "Preparing the simulated demonstration",
-  ],
+  ecg: ["Reading your image locally in the browser", "Checking file format and size", "Preparing the prototype preview", "Finishing up"],
+  xray: ["Reading your image locally in the browser", "Checking file format and size", "Preparing the prototype preview", "Finishing up"],
 };
 
 /** Body areas a user can pick before uploading an X-ray. Used for labelling only. */
@@ -171,15 +161,18 @@ export const DEMO_ANALYSIS_MS = 2000;
 
 export const NO_IMAGE_MESSAGE = "Please upload an image first.";
 
-/** Fixed copy for the inline result panel. Identical for every uploaded image. */
+/** Fixed copy for the analysis result panel. Identical for every uploaded image. */
 export const DEMO_RESULT = {
-  title: "Analysis Demonstration Complete",
-  message:
-    "Your image has been uploaded successfully. This prototype does not perform automatic medical image interpretation. Explore the X-ray Learning Lab to see prepared educational examples.",
-  status: "SIMULATED RESULT",
-  independence:
-    "This message is identical for every image and is independent of the image you uploaded. No diagnosis was performed.",
+  title: "Image Analysis — Prototype Preview",
+  paragraphs: [
+    "In a future version of MedScan, this section would display an AI-assisted interpretation of the uploaded X-ray or ECG image, including relevant observations and educational explanations.",
+    "As MedScan is currently an early-stage hackathon prototype, automatic image analysis is not yet available. This screen demonstrates how the analysis results would be presented in a future version.",
+  ],
+  status: "PROTOTYPE DEMONSTRATION",
+  disclaimer:
+    "This is an educational prototype, not a medical device. No medical analysis or diagnosis has been performed. Do not use this application to make medical decisions.",
 } as const;
 
+/** Safety notice shown next to every Learning Lab example. */
 export const SAFETY_NOTICE =
   "Educational demonstration only. This application does not provide medical diagnoses. Do not use its results to make medical decisions. Consult a qualified healthcare professional.";

@@ -41,7 +41,7 @@ export function LabCaseViewer({ item }: { item: LabCase }) {
                   alt={media.alt}
                   width={media.width}
                   height={media.height}
-                  className="block h-auto max-h-[460px] w-auto max-w-full rounded-lg sm:max-h-[540px]"
+                  className="block h-[340px] w-auto max-w-full rounded-lg sm:h-[480px]"
                 />
                 {showHighlight &&
                   item.highlights.map((h) => (

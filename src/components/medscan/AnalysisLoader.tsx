@@ -45,7 +45,7 @@ export function AnalysisLoader({
         {title}
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Preparing a predefined educational demonstration. No medical interpretation is being performed.
+        Preparing the prototype preview. No medical analysis is being performed.
       </p>
       <Progress value={pct} className="mt-6 h-1.5 bg-sky-soft" aria-label="Demo progress" />
       <ol className="mt-6 grid gap-3 sm:grid-cols-2">
