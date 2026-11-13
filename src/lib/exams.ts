@@ -20,7 +20,7 @@ export const EXAMS: Record<ExamType, ExamInfo> = {
     shortName: "ECG",
     fullName: "Electrocardiogram",
     description:
-      "Upload an ECG image and explore an educational walkthrough of heart rate, rhythm and the classic P-QRS-T waves.",
+      "Upload an ECG image for a private, in-browser preview and see how analysis results will be presented in a future version.",
     uploadLabel: "Upload ECG image",
   },
   xray: {
@@ -29,7 +29,7 @@ export const EXAMS: Record<ExamType, ExamInfo> = {
     shortName: "X-Ray",
     fullName: "Chest Radiograph",
     description:
-      "Upload a chest X-ray image and learn how radiographs are read, from basic anatomy to the structure of a radiology report.",
+      "Choose a body area, upload an X-ray image for a private preview and see how results will be presented in a future version.",
     uploadLabel: "Upload X-ray image",
   },
 };
