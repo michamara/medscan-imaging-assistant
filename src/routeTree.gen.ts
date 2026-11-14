@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AiExperimentLabRouteImport } from './routes/ai-experiment-lab'
 import { Route as EcgRouteImport } from './routes/ecg'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as LearningLabRouteImport } from './routes/learning-lab'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiExperimentLabRoute = AiExperimentLabRouteImport.update({
+  id: '/ai-experiment-lab',
+  path: '/ai-experiment-lab',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EcgRoute = EcgRouteImport.update({
@@ -56,6 +62,7 @@ const ResultsSessionIdRoute = ResultsSessionIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-experiment-lab': typeof AiExperimentLabRoute
   '/ecg': typeof EcgRoute
   '/history': typeof HistoryRoute
   '/learning-lab': typeof LearningLabRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-experiment-lab': typeof AiExperimentLabRoute
   '/ecg': typeof EcgRoute
   '/history': typeof HistoryRoute
   '/learning-lab': typeof LearningLabRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-experiment-lab': typeof AiExperimentLabRoute
   '/ecg': typeof EcgRoute
   '/history': typeof HistoryRoute
   '/learning-lab': typeof LearningLabRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/ai-experiment-lab'
     | '/ecg'
     | '/history'
     | '/learning-lab'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/ai-experiment-lab'
     | '/ecg'
     | '/history'
     | '/learning-lab'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/ai-experiment-lab'
     | '/ecg'
     | '/history'
     | '/learning-lab'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AiExperimentLabRoute: typeof AiExperimentLabRoute
   EcgRoute: typeof EcgRoute
   HistoryRoute: typeof HistoryRoute
   LearningLabRoute: typeof LearningLabRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-experiment-lab': {
+      id: '/ai-experiment-lab'
+      path: '/ai-experiment-lab'
+      fullPath: '/ai-experiment-lab'
+      preLoaderRoute: typeof AiExperimentLabRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ecg': {
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AiExperimentLabRoute: AiExperimentLabRoute,
   EcgRoute: EcgRoute,
   HistoryRoute: HistoryRoute,
   LearningLabRoute: LearningLabRoute,

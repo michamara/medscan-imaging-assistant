@@ -10,6 +10,7 @@ export const NAV_ITEMS = [
   { to: "/ecg", label: "ECG Analysis" },
   { to: "/xray", label: "X-Ray Analysis" },
   { to: "/learning-lab", label: "Learning Lab" },
+  { to: "/ai-experiment-lab", label: "AI Experiment Lab" },
   { to: "/history", label: "History" },
   { to: "/about", label: "About" },
 ] as const;

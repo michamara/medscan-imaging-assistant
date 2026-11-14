@@ -34,3 +34,4 @@ use the editor.
 - Demo history persists only non-sensitive metadata (type, date, format, size) in localStorage via src/lib/history.ts — no file names or image data.
 - Analysis screens (ECG/X-ray upload panel, /results/$sessionId) render only the fixed prototype-preview copy from src/lib/exams.ts (DEMO_RESULT), independent of the uploaded image — the app must never imply real interpretation.
 - All lessons, anatomy guides, glossaries and example cases live only in /learning-lab (data in src/lib/learning-lab.ts); analysis screens never render or link to them — keeps analysis and education clearly separate.
+- The AI Experiment Lab (/ai-experiment-lab) is the only place that runs a real model: the Teachable Machine classifier in public/ai-model, loaded lazily in the browser via src/lib/ai-model.ts (@teachablemachine/image + @tensorflow/tfjs 1.x, the version the model was exported with); it never writes history and stays separate from the prototype analysis screens.

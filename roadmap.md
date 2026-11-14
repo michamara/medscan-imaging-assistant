@@ -7,3 +7,4 @@
 - [x] Remove all lessons from ECG / X-ray analysis pages and result screens; move them into Learning Lab only
 - [x] Learning Lab reachable only via navigation (no links from analysis panel)
 - [x] Browser test desktop + mobile
+- [x] AI Experiment Lab: real in-browser Teachable Machine classifier, scores, notice, error handling
