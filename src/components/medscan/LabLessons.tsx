@@ -33,79 +33,89 @@ const ECG_WAVES = [
   { name: "QT interval", text: "Total time for ventricular activation and recovery." },
 ];
 
-/** Reference lessons. Rendered only inside the Learning Lab. */
-export function LabLessons() {
+/** Chest X-ray anatomy lesson. Rendered only for the "Chest X-ray anatomy" tab. */
+export function ChestAnatomyLesson() {
   return (
-    <>
-      <section className="border-t bg-muted py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Lesson · Chest X-ray"
-            title="Chest X-ray anatomy, step by step"
-            description="Select a numbered marker to learn what each structure is and how it typically appears on a frontal chest radiograph."
-          />
-          <div className="mt-10">
-            <XrayAnatomy />
-          </div>
+    <section className="border-t bg-muted py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Lesson · Chest X-ray"
+          title="Chest X-ray anatomy, step by step"
+          description="Select a numbered marker to learn what each structure is and how it typically appears on a frontal chest radiograph."
+        />
+        <div className="mt-10">
+          <XrayAnatomy />
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div>
-            <SectionHeading
-              eyebrow="Lesson · ECG"
-              title="Anatomy of a single heartbeat"
-              description="An ECG is a graph of voltage over time. Each beat produces the same family of waves, which clinicians examine one by one."
-            />
-            <dl className="mt-8 grid gap-3 sm:grid-cols-2">
-              {ECG_WAVES.map((w) => (
-                <div key={w.name} className="rounded-xl border-l-2 border-sky bg-muted px-4 py-3">
-                  <dt className="text-sm font-semibold text-primary">{w.name}</dt>
-                  <dd className="mt-0.5 text-sm text-muted-foreground">{w.text}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-          <EcgLabelledDiagram className="shadow-lift" />
-        </div>
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {ECG_TOPICS.map(({ icon: Icon, title, text }) => (
-            <article key={title} className="rounded-3xl border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-soft text-primary">
-                <Icon className="h-5 w-5" />
-              </span>
-              <h3 className="mt-4 text-2xl font-medium text-primary">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-muted py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Lesson · Radiology report"
-            title="How a radiology report is organised"
-            description="Radiologists communicate results using a consistent structure. This template shows each section and what it is for — it contains no findings."
-          />
-          <div className="mt-10">
-            <SampleReport />
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl space-y-14 px-4 py-20 sm:px-6 lg:px-8">
-        <SectionHeading eyebrow="Glossary" title="Key terms in simple English" description="Common words you will meet when learning about ECGs and X-rays." />
+/** ECG lesson. Rendered only for the "Normal ECG waveform" tab. */
+export function EcgLesson() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div className="grid items-center gap-10 lg:grid-cols-2">
         <div>
-          <h3 className="mb-5 font-sans text-lg font-semibold tracking-normal text-primary">ECG terms</h3>
-          <Glossary terms={RESULT_CONTENT.ecg.glossary} />
+          <SectionHeading
+            eyebrow="Lesson · ECG"
+            title="Anatomy of a single heartbeat"
+            description="An ECG is a graph of voltage over time. Each beat produces the same family of waves, which clinicians examine one by one."
+          />
+          <dl className="mt-8 grid gap-3 sm:grid-cols-2">
+            {ECG_WAVES.map((w) => (
+              <div key={w.name} className="rounded-xl border-l-2 border-sky bg-muted px-4 py-3">
+                <dt className="text-sm font-semibold text-primary">{w.name}</dt>
+                <dd className="mt-0.5 text-sm text-muted-foreground">{w.text}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        <div>
-          <h3 className="mb-5 font-sans text-lg font-semibold tracking-normal text-primary">X-ray terms</h3>
-          <Glossary terms={RESULT_CONTENT.xray.glossary} />
+        <EcgLabelledDiagram className="shadow-lift" />
+      </div>
+      <div className="mt-16 grid gap-6 md:grid-cols-3">
+        {ECG_TOPICS.map(({ icon: Icon, title, text }) => (
+          <article key={title} className="rounded-3xl border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-soft text-primary">
+              <Icon className="h-5 w-5" />
+            </span>
+            <h3 className="mt-4 text-2xl font-medium text-primary">{title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** Radiology report lesson. Rendered only for the X-ray case tabs. */
+export function ReportLesson() {
+  return (
+    <section className="bg-muted py-20">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Lesson · Radiology report"
+          title="How a radiology report is organised"
+          description="Radiologists communicate results using a consistent structure. This template shows each section and what it is for — it contains no findings."
+        />
+        <div className="mt-10">
+          <SampleReport />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
+  );
+}
+
+/** Glossary for one topic area, rendered with the matching tab. */
+export function GlossarySection({ topic }: { topic: "ecg" | "xray" }) {
+  const terms = topic === "ecg" ? RESULT_CONTENT.ecg.glossary : RESULT_CONTENT.xray.glossary;
+  return (
+    <section className="mx-auto max-w-7xl space-y-14 px-4 py-20 sm:px-6 lg:px-8">
+      <SectionHeading eyebrow="Glossary" title="Key terms in simple English" description="Common words you will meet when learning about ECGs and X-rays." />
+      <div>
+        <h3 className="mb-5 font-sans text-lg font-semibold tracking-normal text-primary">{topic === "ecg" ? "ECG terms" : "X-ray terms"}</h3>
+        <Glossary terms={terms} />
+      </div>
+    </section>
   );
 }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Activity, Bone, CheckCircle2, ScanLine, Wind } from "lucide-react";
 import { PageHeader } from "@/components/medscan/PageHeader";
 import { EducationalBadge, LabCaseViewer } from "@/components/medscan/LabCaseViewer";
-import { LabLessons } from "@/components/medscan/LabLessons";
+import { ChestAnatomyLesson, EcgLesson, GlossarySection, ReportLesson } from "@/components/medscan/LabLessons";
 import { LAB_CASES } from "@/lib/learning-lab";
 import { cn } from "@/lib/utils";
 
@@ -90,7 +90,11 @@ function LearningLabPage() {
         </p>
       </section>
 
-      <LabLessons />
+      {/* Lesson content is rendered conditionally: each tab shows only its own lesson. */}
+      {active.id === "chest-anatomy" && <ChestAnatomyLesson />}
+      {active.id === "normal-ecg" && <EcgLesson />}
+      {(active.id === "wrist-fracture" || active.id === "ankle-fracture" || active.id === "healthy-wrist") && <ReportLesson />}
+      <GlossarySection topic={active.id === "normal-ecg" ? "ecg" : "xray"} />
     </>
   );
 }
