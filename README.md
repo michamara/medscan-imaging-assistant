@@ -1,125 +1,69 @@
-# MedScan Imaging Assistant
+# MedScan
 
-Create a modern, professional and fully functional web application called MedScan
+### Educational Medical Imaging Prototype
 
-The application is an educational medical imaging prototype that demonstrates an interface for ECG (electrocardiogram) and X-ray image analysis.
+## About the Project
 
-IMPORTANT: THE ENTIRE APPLICATION MUST BE IN ENGLISH.
-All navigation, buttons, headings, descriptions, notifications, error messages, sample reports and results must be written in English.
+MedScan is an educational web application created for a hackathon.
 
-1. DESIGN
-- Professional healthcare technology design.
-- White, navy blue and light blue color palette.
-- Modern medical AI dashboard.
-- Elegant typography.
-- Smooth animations.
-- Responsive layout for desktop, tablet and mobile.
-- Professional icons and illustrations.
+Our goal is to explore how artificial intelligence could support medical imaging education in the future.
 
-2. HOMEPAGE
-Create a landing page containing:
-- MedScan  logo.
-- Main heading: "Intelligent Medical Imaging Assistant".
-- Subtitle: "Explore ECG and X-ray imaging through AI-inspired educational demonstrations."
-- Two large interactive cards: ECG ANALYSIS and X-RAY ANALYSIS.
-- Button: "Get Started".
-- Section: "How It Works".
-- Section: "About MedScan".
+MedScan focuses on X-ray images and ECG (electrocardiogram) waveforms.
 
-3. ECG ANALYSIS
-Create an ECG upload interface with:
-- Upload ECG image button.
-- Drag and drop functionality.
-- Support for JPG, JPEG and PNG.
-- Image preview.
-- Remove and replace image buttons.
-- Button: "Start Demo Analysis".
-- Educational ECG waveform illustration.
-- Educational information about heart rate, rhythm and ECG waves.
+## Main Features
 
-4. X-RAY ANALYSIS
-Create a separate X-ray upload interface with:
-- Upload X-ray image button.
-- Drag and drop functionality.
-- Support for JPG, JPEG and PNG.
-- Image preview.
-- Remove and replace image buttons.
-- Button: "Start Demo Analysis".
-- Educational chest X-ray anatomy information.
-- Sample radiology report interface.
+### 1. Image Analysis — Prototype Preview
 
-5. RESULTS DASHBOARD
-Create a professional results screen for each examination type.
-Include:
-- Uploaded image preview.
-- Examination type.
-- Analysis status.
-- Educational explanation.
-- Medical terminology explained in simple English.
-- A clearly visible disclaimer.
-All results must be predefined educational demonstrations, completely independent of the uploaded image.
-Never claim that an actual medical analysis has been performed. Do not invent measurements or diagnoses.
+- Upload and preview X-ray and ECG images.
+- Explore a demonstration of a future AI-assisted analysis interface.
+- View an information panel explaining how image observations could be presented.
 
-6. HISTORY
-Create an analysis history section with:
-- Previous demo sessions.
-- Examination type.
-- Date and time.
-- View results button.
-- Delete history button.
-Store only non-sensitive demonstration metadata locally.
+**Important:** The current version does not automatically analyze uploaded images or detect medical conditions.
 
-7. ABOUT PAGE
-Explain:
-- What MedScan  is.
-- How artificial intelligence can support medical imaging research.
-- What ECG examinations are.
-- What X-ray examinations are.
-- Limitations of the prototype.
+### 2. Interactive Learning Lab
 
-8. TECHNICAL REQUIREMENTS
-- Use React and TypeScript.
-- Create reusable components.
-- Implement working navigation.
-- Implement functional image uploads.
-- Generate image previews locally in the browser.
-- Validate file formats and file sizes.
-- Do not upload medical images to external servers.
-- Include loading animations.
-- Include useful error messages.
-- Make all buttons functional.
-- Ensure mobile responsiveness.
+MedScan includes educational examples covering:
 
-9. MEDICAL SAFETY
-This is an educational hackathon prototype, NOT a medical device.
-It must not provide real diagnoses, treatment recommendations or disease detection.
-All results must be explicitly labelled:
-"SIMULATED DEMONSTRATION – NOT A MEDICAL DIAGNOSIS"
-Add this disclaimer:
-"MedScan  is an educational prototype. It does not perform actual medical image interpretation and must not be used for medical decisions."
+- Wrist fractures
+- Ankle fractures
+- Healthy wrist anatomy
+- Chest X-ray anatomy
+- Normal ECG waveforms
 
-10. FINAL GOAL
-Create a polished, impressive and professional medical technology web application.
-The final product should look like a modern healthcare AI startup platform, with excellent user experience, beautiful dashboards, functional image uploads and impressive educational demonstration screens.
-EVERY SINGLE USER-FACING ELEMENT MUST BE IN ENGLISH.
+Users can explore educational explanations and interactive image highlights.
 
-This project was built with [Lovable](https://lovable.dev).
+## Technologies Used
 
-## Build with Lovable
+- Lovable — AI-assisted web application development
+- React — User interface
+- TypeScript — Application functionality
+- GitHub — Source code management
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/beec4a36-9999-4319-a3d4-3c9b6ef186eb).
+## How to Use MedScan
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+1. Open the MedScan web application.
+2. Navigate to the Image Analysis section.
+3. Upload an example X-ray or ECG image.
+4. Click "Analyze Image" to view the prototype information panel.
+5. Open the Learning Lab to explore interactive educational examples.
 
-## Development
+## Limitations and Safety
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+MedScan is an educational prototype, not a medical device.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+It does not perform real medical image analysis, detect fractures, diagnose diseases, or provide medical advice.
+
+Do not use MedScan to make medical decisions.
+
+## Future Plans
+
+We would like to explore:
+
+- Research-based AI image analysis using appropriately licensed, anonymized datasets.
+- More interactive X-ray examples.
+- Additional ECG educational materials.
+- Improved educational explanations and visualizations.
+
+## Hackathon Project
+
+MedScan was created as a hackathon project to demonstrate how technology could make medical imaging education more interactive and accessible.
